@@ -1,0 +1,58 @@
+.nav-link {
+  position: relative;
+  display: inline-block;
+  height: 24px;
+  overflow: hidden;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: #6ee7b7;
+  transform: translateX(-50%);
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+  color: #6ee7b7;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link span {
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* First word */
+.nav-link span:first-child {
+  transform: translateY(0);
+}
+
+/* Second word starts below */
+.nav-link span:last-child {
+  color: #6ee7b7;
+  transform: translateY(100%);
+}
+
+/* Move first word UP */
+.nav-link:hover span:first-child {
+  transform: translateY(-100%);
+}
+
+/* Bring second word UP */
+.nav-link:hover span:last-child {
+  transform: translateY(-100%);
+}

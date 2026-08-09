@@ -1,0 +1,34 @@
+.highlight-word {
+  position: relative;
+  display: inline-block;
+  color: #6ee7b7;
+  z-index: 1;
+}
+
+.highlight-word::before {
+  content: "";
+  position: absolute;
+
+  width: 150%;
+  height: 260%;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(52, 211, 153, 0.55) 0%,
+      rgba(52, 211, 153, 0.38) 25%,
+      rgba(52, 211, 153, 0.20) 45%,
+      rgba(52, 211, 153, 0.08) 65%,
+      transparent 80%
+    );
+
+  filter: blur(28px);
+
+  z-index: -1;
+  pointer-events: none;
+}
