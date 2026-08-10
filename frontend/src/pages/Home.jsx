@@ -1,14 +1,24 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import HomeContent from '../components/HomeContent';
+import React from "react";
+import Navbar from "../components/Navbar";
+import HomeContent from "../components/HomeContent";
+import HomeServices from "../components/HomeServices";
+import HomeBackground from "../components/HomeBackground";
+import CustomCursor from "../components/CustomCursor";
+import WhyLeoFoundary from "../components/WhyLeoFoundary";
+import Hero from "../components/Hero";
 
 const Home = () => {
   return (
-    <div className="w-screen h-screen bg-black">
-      <Navbar />
-      <HomeContent />
+    <>
+      <HomeBackground />
+      <CustomCursor />
 
-    </div>
+      <div className="relative z-10 cursor-none">
+        <Hero />
+        <HomeServices />
+        <WhyLeoFoundary />
+      </div>
+    </>
   );
 };
 

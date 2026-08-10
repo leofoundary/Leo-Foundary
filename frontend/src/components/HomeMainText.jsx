@@ -3,7 +3,7 @@ import "../style/HomeContent.css";
 
 const HomeMainText = () => {
   return (
-    <div className="relative w-full text-white flex flex-col items-center justify-center">
+    <div className="hero-main-text relative w-full text-white flex flex-col items-center justify-center">
       <h1 className="main-text uppercase text-5xl md:text-6xl lg:text-7xl font-bold text-center">
         <span>Build What's Next.</span>
         <br />

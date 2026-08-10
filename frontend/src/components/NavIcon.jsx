@@ -13,6 +13,11 @@ const NavIcon = () => {
           <span>Testimonials</span>
 
         </Link>
+        <Link to="/services" className="nav-link">
+          <span>Services</span>
+          <span>Services</span>
+
+        </Link>
         <Link to="/contact" className="nav-link">
           <span>Contact Us</span>
           <span>Contact Us</span>
@@ -21,11 +26,6 @@ const NavIcon = () => {
         <Link to="/about" className="nav-link">
           <span>About</span>
           <span>About</span>
-
-        </Link>
-        <Link to="/services" className="nav-link">
-          <span>Services</span>
-          <span>Services</span>
 
         </Link>
       </div>

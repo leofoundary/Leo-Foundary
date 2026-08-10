@@ -4,7 +4,7 @@ import { Dot } from "lucide-react";
 
 const HomeTag = () => {
   return (
-    <div className="tag flex items-center gap-2 text-[18px] font-semibold text-gray-300">
+    <div className="hero-tag tag flex items-center gap-2 text-[18px] font-semibold text-gray-300">
         <span>AI </span>
         <span>
           <Dot size={36} />
