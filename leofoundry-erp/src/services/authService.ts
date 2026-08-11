@@ -2,7 +2,7 @@ import { api } from "./api"
 import type { User } from "@/types/auth"
 
 export interface LoginRequest {
-  email: string
+  loginId: string
   password: string
 }
 
