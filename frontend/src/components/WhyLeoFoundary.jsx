@@ -71,17 +71,17 @@ const WhyLeoFoundary = () => {
 
           {/* Small Label */}
 
-          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.35em] text-emerald-400">
+          <p className="mb-5 text-xl font-semibold uppercase tracking-[0.35em] text-emerald-400">
             Why LeoFoundary
           </p>
 
           {/* Main Heading */}
 
-          <h2 className="text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
+          <h2 className="text-4xl font-medium leading-tight md:text-6xl lg:text-7xl">
             We Build With
             <br />
 
-            <span className="text-emerald-400">
+            <span className="text-emerald-400 font-bold">
               Purpose.
             </span>
           </h2>
@@ -127,6 +127,7 @@ const WhyLeoFoundary = () => {
                 duration-500
                 hover:border-emerald-400/30
                 hover:bg-emerald-400/[0.03]
+                font-light
               "
             >
 

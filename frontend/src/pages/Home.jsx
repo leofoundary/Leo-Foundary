@@ -6,6 +6,12 @@ import HomeBackground from "../components/HomeBackground";
 import CustomCursor from "../components/CustomCursor";
 import WhyLeoFoundary from "../components/WhyLeoFoundary";
 import Hero from "../components/Hero";
+import HowWeWork from "../sections/HowWeWork";
+import Products from "../sections/Products";
+import FinalCTA from "../sections/FinalCTA";
+import LeoFoundarySignature from "../sections/LeoFoundarySignature";
+import Footer from "../sections/Footer";
+import FAQ from "../sections/FAQ";
 
 const Home = () => {
   return (
@@ -13,10 +19,16 @@ const Home = () => {
       <HomeBackground />
       <CustomCursor />
 
-      <div className="relative z-10 cursor-none">
+      <div className="relative z-10">
         <Hero />
         <HomeServices />
         <WhyLeoFoundary />
+        <HowWeWork />
+        <Products />
+        <FAQ />
+        <FinalCTA />
+        <LeoFoundarySignature /> 
+        <Footer />
       </div>
     </>
   );
