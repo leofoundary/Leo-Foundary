@@ -7,11 +7,11 @@ import CustomCursor from "../components/CustomCursor";
 import WhyLeoFoundary from "../components/WhyLeoFoundary";
 import Hero from "../components/Hero";
 import HowWeWork from "../sections/HowWeWork";
-import Products from "../sections/Products";
 import FinalCTA from "../sections/FinalCTA";
 import LeoFoundarySignature from "../sections/LeoFoundarySignature";
 import Footer from "../sections/Footer";
 import FAQ from "../sections/FAQ";
+import ProductsSection from "../sections/ProductsSection";
 
 const Home = () => {
   return (
@@ -24,7 +24,7 @@ const Home = () => {
         <HomeServices />
         <WhyLeoFoundary />
         <HowWeWork />
-        <Products />
+        <ProductsSection />
         <FAQ />
         <FinalCTA />
         <LeoFoundarySignature /> 

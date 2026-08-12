@@ -13,9 +13,9 @@ const NavIcon = () => {
           <span>Testimonials</span>
 
         </Link>
-        <Link to="/services" className="nav-link">
-          <span>Services</span>
-          <span>Services</span>
+        <Link to={`/products`} className="nav-link">
+          <span>Products</span>
+          <span>Products</span>
 
         </Link>
         <Link to="/contact" className="nav-link">

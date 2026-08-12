@@ -155,7 +155,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="#products"
+                href="products"
                 className="
                   w-fit
                   text-sm
@@ -302,7 +302,7 @@ const Footer = () => {
             </p>
 
             <a
-              href="#contact"
+              href="contact"
               className="
                 group
                 mt-6

@@ -243,7 +243,7 @@ const FAQ = () => {
           <p className="text-[12p5] font-light text-gray-700">
             Still have questions?{" "}
             <a
-              href="#contact"
+              href="contact"
               className="
                 text-gray-500
                 underline
