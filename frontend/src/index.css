@@ -11,3 +11,8 @@ body,
   font-style: normal;
 }
 
+html,
+body,
+#root {
+  background: #050505;
+}

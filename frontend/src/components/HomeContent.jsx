@@ -10,65 +10,91 @@ const HomeContent = () => {
   const contentRef = useRef(null);
 
   useLayoutEffect(() => {
-  const ctx = gsap.context(() => {
-    const tl = gsap.timeline({
-      defaults: {
-        ease: "power4.out",
-      },
-    });
-
-    // Tag first
-    tl.from(".hero-tag", {
-      y: 30,
-      opacity: 0,
-      duration: 0.7,
-    })
-
-      // Text + buttons appear together
-      .from(
-        ".hero-main-text",
-        {
-          y: 100,
-          opacity: 0,
-          duration: 1.1,
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: {
           ease: "power4.out",
         },
-        "-=0.1"
-      )
-      .from(
-        ".hero-buttons",
-        {
-          y: 60,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power4.out",
-        },
-        "<"
-      );
-  }, contentRef);
+      });
 
-  return () => ctx.revert();
-}, []);
+      tl.from(".hero-tag", {
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+      })
+        .from(
+          ".hero-main-text",
+          {
+            y: 100,
+            opacity: 0,
+            duration: 1.1,
+          },
+          "-=0.1"
+        )
+        .from(
+          ".hero-description",
+          {
+            y: 25,
+            opacity: 0,
+            duration: 0.7,
+          },
+          "-=0.5"
+        )
+        .from(
+          ".hero-buttons",
+          {
+            y: 40,
+            opacity: 0,
+            duration: 0.7,
+          },
+          "-=0.35"
+        );
+    }, contentRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div
       ref={contentRef}
-      className="relative flex h-full w-full flex-col items-center justify-center text-white"
+      className="
+        relative
+        flex
+        h-full
+        w-full
+        flex-col
+        items-center
+        justify-center
+        px-6
+        text-center
+        text-white
+      "
     >
       <HomeTag />
 
       <HomeMainText />
 
-      <div className="hero-buttons">
+
+      <div
+        className="
+          hero-buttons
+          mt-9
+          flex
+          flex-col
+          items-center
+          gap-4
+          sm:flex-row
+        "
+      >
         <HomeButton
-          href="/contact"
-          text="Get Started"
-          hoverText="Explore More"
+          href="/products"
+          text="Explore Products"
+          hoverText="View Products"
         />
 
         <HomeButton
           href="/contact"
-          text="Contact Us"
+          text="Start a Conversation"
           hoverText="Get in Touch"
         />
       </div>

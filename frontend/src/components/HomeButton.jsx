@@ -1,6 +1,7 @@
 import React from "react";
 import "../style/HomeButton.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+
 const HomeButton = ({ href, text, hoverText }) => {
   return (
     <Link to={href} className="hero-btn">

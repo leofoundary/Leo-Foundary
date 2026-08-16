@@ -1,20 +1,46 @@
-import React from 'react';
+import React from "react";
 import "../style/HomeContent.css";
 import { Dot } from "lucide-react";
 
 const HomeTag = () => {
   return (
-    <div className="fonthero-tag tag flex items-center gap-2 text-[18px] font-light text-gray-300">
-        <span>AI </span>
-        <span>
-          <Dot size={36} />
-        </span>
-        <span>Software</span>
-        <span>
-          <Dot size={36} />
-        </span>
-        <span>Automation</span>
-      </div>
+    <div
+      className="
+        hero-tag
+        flex
+        items-center
+        justify-center
+        gap-1
+        whitespace-nowrap
+        px-4
+        text-xs
+        font-light
+        text-gray-300
+
+        sm:gap-2
+        sm:text-sm
+
+        md:text-lg
+      "
+    >
+      <span>AI</span>
+
+      <Dot
+        className="shrink-0"
+        size={22}
+        strokeWidth={1.5}
+      />
+
+      <span>Software</span>
+
+      <Dot
+        className="shrink-0"
+        size={22}
+        strokeWidth={1.5}
+      />
+
+      <span>Automation</span>
+    </div>
   );
 };
 

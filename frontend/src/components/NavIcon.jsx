@@ -1,34 +1,52 @@
-import React from 'react';
-import "../style/Navbar.css";
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+
 const NavIcon = () => {
+  const location = useLocation();
+
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "Products", path: "/products" },
+    { label: "Contact Us", path: "/contact" },
+    { label: "About", path: "/about" },
+  ];
+
+  const isActive = (path) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+
+    return location.pathname.startsWith(path);
+  };
+
   return (
-    <div className="flex items-center gap-15 text-[1.2rem]">
-        <Link to="/" className="nav-link">
-          <span>Home</span>
-          <span>Home</span>
-        </Link>
-        <Link to="/testimonials" className="nav-link">
-          <span>Testimonials</span>
-          <span>Testimonials</span>
+    <nav className="main-nav">
+      {navItems.map((item) => {
+        const active = isActive(item.path);
 
-        </Link>
-        <Link to={`/products`} className="nav-link">
-          <span>Products</span>
-          <span>Products</span>
+        return (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`main-nav-link ${
+              active ? "main-nav-link-active" : ""
+            }`}
+          >
+            <span className="main-nav-window">
+              <span className="main-nav-track">
+                <span className="main-nav-label">
+                  {item.label}
+                </span>
 
-        </Link>
-        <Link to="/contact" className="nav-link">
-          <span>Contact Us</span>
-          <span>Contact Us</span>
-
-        </Link>
-        <Link to="/about" className="nav-link">
-          <span>About</span>
-          <span>About</span>
-
-        </Link>
-      </div>
+                <span className="main-nav-label">
+                  {item.label}
+                </span>
+              </span>
+            </span>
+          </Link>
+        );
+      })}
+    </nav>
   );
 };
 

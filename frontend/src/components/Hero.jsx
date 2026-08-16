@@ -5,7 +5,6 @@ import HomeContent from "./HomeContent";
 const Hero = () => {
   return (
     <section className="relative flex h-screen w-full flex-col">
-      <Navbar />
 
       <div className="flex-1">
         <HomeContent />

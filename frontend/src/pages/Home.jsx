@@ -1,37 +1,77 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import HomeContent from "../components/HomeContent";
+
 import HomeServices from "../components/HomeServices";
 import HomeBackground from "../components/HomeBackground";
 import CustomCursor from "../components/CustomCursor";
 import WhyLeoFoundary from "../components/WhyLeoFoundary";
+
 import Hero from "../components/Hero";
+
 import HowWeWork from "../sections/HowWeWork";
+import ProductsSection from "../sections/ProductsSection";
+import FAQ from "../sections/FAQ";
 import FinalCTA from "../sections/FinalCTA";
 import LeoFoundarySignature from "../sections/LeoFoundarySignature";
 import Footer from "../sections/Footer";
-import FAQ from "../sections/FAQ";
-import ProductsSection from "../sections/ProductsSection";
+
 
 const Home = () => {
   return (
     <>
+      {/* =====================================
+          GLOBAL HOME BACKGROUND
+      ===================================== */}
+
       <HomeBackground />
+
       <CustomCursor />
 
-      <div className="relative z-10">
+
+      {/* =====================================
+          PAGE CONTENT
+      ===================================== */}
+
+      <main className="relative z-10">
+
+        {/* HERO */}
         <Hero />
+
+
+        {/* WHAT WE BUILD */}
         <HomeServices />
-        <WhyLeoFoundary />
-        <HowWeWork />
+
+
+        {/* PRODUCTS */}
         <ProductsSection />
+
+
+        {/* WHY LEO FOUNDRY */}
+        <WhyLeoFoundary />
+
+
+        {/* HOW WE WORK */}
+        <HowWeWork />
+
+
+        {/* FAQ */}
         <FAQ />
+
+
+        {/* FINAL CTA */}
         <FinalCTA />
-        <LeoFoundarySignature /> 
+
+
+        {/* SIGNATURE */}
+        <LeoFoundarySignature />
+
+
+        {/* FOOTER */}
         <Footer />
-      </div>
+
+      </main>
     </>
   );
 };
+
 
 export default Home;

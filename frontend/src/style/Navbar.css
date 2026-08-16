@@ -1,58 +1,197 @@
-.nav-link {
-  position: relative;
-  display: inline-block;
-  height: 24px;
-  overflow: hidden;
+/* =========================================
+   GLOBAL NAVBAR
+========================================= */
 
-  color: #ffffff;
+.navbar-global {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  z-index: 100;
+
+  width: 100%;
+
+  background: transparent;
+}
+
+.navbar-inner {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  height: 76px;
+
+  padding: 0 80px;
+}
+
+.navbar-logo {
+  color: white;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  letter-spacing: -0.04em;
+
   text-decoration: none;
 
-  transition: color 0.3s ease;
+  transition: color 300ms ease;
 }
 
-.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -6px;
-  width: 0;
-  height: 2px;
-  border-radius: 999px;
-  background: #6ee7b7;
-  transform: translateX(-50%);
-  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+.navbar-logo:hover {
+  color: #34d399;
 }
 
-.nav-link:hover {
-  color: #6ee7b7;
+
+/* =========================================
+   MAIN NAV
+========================================= */
+
+.main-nav {
+  display: flex;
+
+  align-items: center;
+
+  gap: 3rem;
 }
 
-.nav-link:hover::after {
-  width: 100%;
+.main-nav-link {
+  position: relative;
+
+  display: inline-block;
+
+  color: #737373;
+
+  text-decoration: none;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
-.nav-link span {
+
+/* =========================================
+   FIXED ANIMATION WINDOW
+========================================= */
+
+.main-nav-window {
   display: block;
-  transition: transform 0.35s cubic-bezier(0.76, 0, 0.24, 1);
+
+  width: max-content;
+
+  height: 22px;
+
+  overflow: hidden;
 }
 
-/* First word */
-.nav-link span:first-child {
-  transform: translateY(0);
+
+/* =========================================
+   MOVING TRACK
+========================================= */
+
+.main-nav-track {
+  display: flex;
+
+  flex-direction: column;
+
+  width: max-content;
+
+  transform: translate3d(0, 0, 0);
+
+  will-change: transform;
+
+  transition:
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Second word starts below */
-.nav-link span:last-child {
-  color: #6ee7b7;
-  transform: translateY(100%);
+
+/* =========================================
+   TEXT
+========================================= */
+
+.main-nav-label {
+  display: block;
+
+  height: 22px;
+
+  flex: 0 0 22px;
+
+  font-size: 0.9rem;
+
+  font-weight: 400;
+
+  line-height: 22px;
+
+  white-space: nowrap;
+
+  color: #737373;
 }
 
-/* Move first word UP */
-.nav-link:hover span:first-child {
-  transform: translateY(-100%);
+
+/* =========================================
+   SECOND COPY
+========================================= */
+
+.main-nav-label:nth-child(2) {
+  color: #34d399;
 }
 
-/* Bring second word UP */
-.nav-link:hover span:last-child {
-  transform: translateY(-100%);
+
+/* =========================================
+   HOVER
+========================================= */
+
+.main-nav-link:hover .main-nav-track {
+  transform: translate3d(0, -22px, 0);
+}
+
+
+/* =========================================
+   ACTIVE
+========================================= */
+
+.main-nav-link-active .main-nav-label:first-child {
+  color: #34d399;
+
+  text-decoration: underline;
+
+  text-decoration-color: #34d399;
+
+  text-decoration-thickness: 1px;
+
+  text-underline-offset: 7px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+  .navbar-inner {
+    padding: 0 30px;
+  }
+
+  .main-nav {
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .navbar-inner {
+    padding: 0 20px;
+  }
+
+  .navbar-logo {
+    font-size: 1.15rem;
+  }
+
+  .main-nav {
+    gap: 1rem;
+  }
+
+  .main-nav-label {
+    font-size: 0.75rem;
+  }
 }

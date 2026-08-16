@@ -12,30 +12,54 @@ import ProductPageEnd from "../sections/ProjectPageEnd";
 
 const Products = () => {
   useEffect(() => {
-    const hash = window.location.hash;
+    let lastScrollY = window.scrollY;
 
-    if (!hash) return;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
 
-    const id = hash.substring(1);
+      const navbar = document.querySelector(".navbar-global");
 
-    const timeout = setTimeout(() => {
-      const element = document.getElementById(id);
+      if (!navbar) return;
 
-      if (!element) return;
+      // At very top: always show navbar
+      if (currentScrollY < 80) {
+        navbar.classList.remove("products-navbar-hidden");
+        lastScrollY = currentScrollY;
+        return;
+      }
 
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }, 100);
+      // Scrolling down
+      if (currentScrollY > lastScrollY) {
+        navbar.classList.add("products-navbar-hidden");
+      }
 
-    return () => clearTimeout(timeout);
+      // Scrolling up
+      else {
+        navbar.classList.remove("products-navbar-hidden");
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+
+      // IMPORTANT:
+      // restore navbar when leaving Products page
+      const navbar = document.querySelector(".navbar-global");
+
+      navbar?.classList.remove("products-navbar-hidden");
+    };
   }, []);
 
   return (
-    <main className="relative min-h-screen text-white">
+    <main className="products-page relative min-h-screen text-white">
+      {" "}
       <HomeBackground />
-
       <div className="relative z-10">
         {/* HERO */}
         <ProductPageHero />
