@@ -101,6 +101,7 @@ const FinalCTA = () => {
         px-6
         py-40
         text-white
+        w-screen
       "
     >
       {/* Main emerald atmosphere */}

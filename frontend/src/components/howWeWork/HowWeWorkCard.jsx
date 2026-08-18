@@ -16,32 +16,58 @@ const HowWeWorkCard = ({
   return (
     <div
       ref={cardRef}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={`
-        absolute
-        w-[420px]
+        relative
+        w-full
+        min-w-0
+
+        md:absolute
         md:w-[420px]
+
         ${isHovered ? "z-50" : "z-10"}
       `}
       style={{
-        left: isLeft
-          ? "calc(50% - 485px)"
-          : "calc(50% + 65px)",
+        /*
+         * Desktop positioning
+         *
+         * On mobile these values are not applied.
+         */
+        ...(point
+          ? {
+              left: isLeft
+                ? "calc(50% - 485px)"
+                : "calc(50% + 65px)",
 
-        top: `${point.y - 95}px`,
+              top: `${point.y - 95}px`,
+            }
+          : {}),
       }}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
     >
 
-      {/* Main card */}
+      {/* =========================================
+          MAIN CARD
+      ========================================= */}
 
       <div
         className={`
           relative
-          min-h-[220px]
+          w-full
+          min-w-0
+
+          min-h-[190px]
           rounded-2xl
+
           border
-          p-8
+          p-5
+
+          sm:min-h-[200px]
+          sm:p-6
+
+          md:min-h-[220px]
+          md:p-8
+
           transition-all
           duration-500
 
@@ -59,27 +85,79 @@ const HowWeWorkCard = ({
         `}
       >
 
-        <div className="text-[18px] font-medium tracking-[0.35em] text-emerald-400">
+        {/* Step number */}
+
+        <div
+          className="
+            text-[15px]
+            font-medium
+            tracking-[0.25em]
+            text-emerald-400
+
+            sm:text-[17px]
+            sm:tracking-[0.3em]
+
+            md:text-[18px]
+            md:tracking-[0.35em]
+          "
+        >
           {step.number}
         </div>
 
-        <h3 className="mt-4 text-[20px] font-semibold tracking-wide text-white">
+
+        {/* Title */}
+
+        <h3
+          className="
+            mt-3
+            text-[18px]
+            font-semibold
+            tracking-wide
+            text-white
+
+            sm:mt-4
+            sm:text-[19px]
+
+            md:text-[20px]
+          "
+        >
           {step.title}
         </h3>
 
-        <p className="mt-4 max-w-[340px] text-[14px] leading-6 text-gray-300">
+
+        {/* Description */}
+
+        <p
+          className="
+            mt-3
+            max-w-full
+            text-[13px]
+            leading-6
+            text-gray-300
+
+            sm:mt-4
+            sm:text-[14px]
+
+            md:max-w-[340px]
+          "
+        >
           {step.short}
         </p>
 
       </div>
 
-      {/* Hover detail */}
 
-      <HowWeWorkDetail
-        step={step}
-        isLeft={isLeft}
-        isHovered={isHovered}
-      />
+      {/* =========================================
+          HOVER DETAIL
+      ========================================= */}
+
+      <div className="hidden md:block">
+        <HowWeWorkDetail
+          step={step}
+          isLeft={isLeft}
+          isHovered={isHovered}
+        />
+      </div>
 
     </div>
   );

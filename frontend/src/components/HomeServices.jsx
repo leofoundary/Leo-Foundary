@@ -19,41 +19,41 @@ const services = [
     title: "Websites & Web Apps",
     description: "Modern digital experiences built around your business.",
     icon: Globe,
-    href: "/services#web-development",
+    href: "/products#web-development",
   },
   {
     title: "AI Solutions",
     description:
       "Intelligent systems and AI agents that reduce repetitive work.",
     icon: Bot,
-    href: "/services#ai-solutions",
+    href: "/products#ai-solutions",
   },
   {
     title: "CRM Systems",
     description:
       "Manage leads, customers, sales and relationships in one place.",
     icon: Users,
-    href: "/services#crm",
+    href: "/products#crm",
   },
   {
     title: "ERP Systems",
     description: "Connect your operations, people and business data.",
     icon: Building2,
-    href: "/services#erp",
+    href: "/products#erp",
   },
   {
     title: "Business Automation",
     description:
       "Automate repetitive workflows and make your business faster.",
     icon: Workflow,
-    href: "/services#automation",
+    href: "/products#automation",
   },
   {
     title: "Custom Software",
     description:
       "Dashboards, portals, APIs and software built around your needs.",
     icon: Code2,
-    href: "/services#custom-software",
+    href: "/products#custom-software",
   },
 ];
 

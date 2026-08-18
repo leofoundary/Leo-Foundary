@@ -1,67 +1,102 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const ContactBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div
+
+      {/* =========================================
+          SOFT CENTRAL GLOW
+      ========================================= */}
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 1.8,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className="
           absolute
           left-1/2
-          top-20
+          top-[12%]
           -translate-x-1/2
-          w-[700px]
-          h-[500px]
+          h-[420px]
+          w-[420px]
           rounded-full
-          bg-emerald-400/[0.08]
-          blur-[100px]
+          bg-emerald-400/[0.035]
+          blur-[130px]
+          md:h-[550px]
+          md:w-[550px]
         "
       />
 
-      <div
+      {/* =========================================
+          BACKGROUND WORD
+      ========================================= */}
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 1.4,
+          delay: 0.15,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className="
           absolute
           left-1/2
-          top-20
+          top-[9%]
           -translate-x-1/2
-          whitespace-nowrap
           select-none
-          pointer-events-none
-          text-[22vw]
-          md:text-[20vw]
-          lg:text-[18vw]
+          whitespace-nowrap
+
+          text-[24vw]
           font-extrabold
-          tracking-[-0.07em]
           leading-none
-          text-emerald-300/10
+          tracking-[-0.09em]
+
+          text-white/[0.025]
+
+          md:text-[20vw]
+          lg:text-[17vw]
         "
       >
         CONTACT
-      </div>
+      </motion.div>
 
-      {/* Left circuit line */}
-      <div
+      {/* =========================================
+          LEFT STRUCTURE
+      ========================================= */}
+
+      <motion.div
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          duration: 1.2,
+          delay: 0.35,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className="
           absolute
-          -left-32
-          top-28
-          w-[500px]
-          h-[300px]
-          rotate-[25deg]
+          -left-40
+          top-44
+          h-[280px]
+          w-[520px]
+          rotate-[24deg]
           border-t
-          border-emerald-300/30
+          border-white/[0.045]
         "
       >
         <span
           className="
             absolute
             left-[35%]
-            -top-[4px]
-            w-2
-            h-2
+            -top-[3px]
+            h-1.5
+            w-1.5
             rounded-full
-            border
-            border-emerald-300/40
-            bg-[#050606]
+            bg-emerald-400/30
           "
         />
 
@@ -69,40 +104,47 @@ const ContactBackground = () => {
           className="
             absolute
             right-[15%]
-            -top-[4px]
-            w-2
-            h-2
+            -top-[3px]
+            h-1.5
+            w-1.5
             rounded-full
-            border
-            border-emerald-300/40
-            bg-[#050606]
+            bg-emerald-400/20
           "
         />
-      </div>
+      </motion.div>
 
-      <div
+      {/* =========================================
+          RIGHT STRUCTURE
+      ========================================= */}
+
+      <motion.div
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          duration: 1.2,
+          delay: 0.45,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className="
           absolute
-          -right-32
-          top-36
-          w-[500px]
-          h-[300px]
-          -rotate-[25deg]
+          -right-40
+          top-52
+          h-[280px]
+          w-[520px]
+          -rotate-[24deg]
           border-t
-          border-emerald-300/30
+          border-white/[0.045]
         "
       >
         <span
           className="
             absolute
             left-[35%]
-            -top-[4px]
-            w-2
-            h-2
+            -top-[3px]
+            h-1.5
+            w-1.5
             rounded-full
-            border
-            border-emerald-300/40
-            bg-[#050606]
+            bg-emerald-400/30
           "
         />
 
@@ -110,16 +152,43 @@ const ContactBackground = () => {
           className="
             absolute
             right-[15%]
-            -top-[4px]
-            w-2
-            h-2
+            -top-[3px]
+            h-1.5
+            w-1.5
             rounded-full
-            border
-            border-emerald-300/40
-            bg-[#050606]
+            bg-emerald-400/20
           "
         />
-      </div>
+      </motion.div>
+
+      {/* =========================================
+          SUBTLE CENTER LINE
+      ========================================= */}
+
+      <motion.div
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={{ scaleX: 1, opacity: 1 }}
+        transition={{
+          duration: 1.4,
+          delay: 0.6,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="
+          absolute
+          left-1/2
+          top-[42%]
+          h-px
+          w-[70vw]
+          max-w-[1000px]
+          -translate-x-1/2
+          origin-center
+          bg-gradient-to-r
+          from-transparent
+          via-emerald-400/[0.08]
+          to-transparent
+        "
+      />
+
     </div>
   );
 };

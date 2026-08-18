@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const HomeButton = ({ href, text, hoverText }) => {
   return (
     <Link to={href} className="hero-btn">
-      <span className="btn-text-wrap">
+      <span className="btn-text-wrap text-[13px]">
         <span className="btn-text btn-current">
           {text}
         </span>

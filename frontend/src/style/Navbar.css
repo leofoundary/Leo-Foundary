@@ -195,3 +195,16 @@
     font-size: 0.75rem;
   }
 }
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
+
+@media (max-width: 650px) {
+  .navbar-global {
+    height: 76px;
+  }
+
+  .navbar-global .main-nav {
+    display: none;
+  }
+}

@@ -33,7 +33,11 @@ const LeoFoundarySignature = () => {
         justify-center
         overflow-hidden
         px-4
-        py-24
+        py-20
+
+        sm:px-5
+        sm:py-24
+
         md:px-8
         md:py-28
       "
@@ -48,28 +52,40 @@ const LeoFoundarySignature = () => {
           w-full
           items-center
           justify-center
+          overflow-visible
         "
         style={{
           "--mouse-x": "50%",
           "--mouse-y": "50%",
         }}
       >
-        {/* Base text */}
+
+        {/* =====================================
+            BASE TEXT
+        ====================================== */}
 
         <h2
           className="
             select-none
             whitespace-nowrap
             text-center
-            text-[14vw]
+
+            text-[clamp(42px,11vw,60px)]
+
             font-bold
             uppercase
             leading-none
             tracking-[-0.045em]
+
             text-white/[0.08]
+
             transition-transform
             duration-500
+
+            sm:text-[clamp(42px,10vw,64px)]
+
             md:text-[11vw]
+
             lg:text-[9.5vw]
           "
           style={{
@@ -79,7 +95,10 @@ const LeoFoundarySignature = () => {
           LEO FOUNDARY
         </h2>
 
-        {/* Emerald cursor reveal */}
+
+        {/* =====================================
+            EMERALD CURSOR REVEAL
+        ====================================== */}
 
         <div
           className="
@@ -107,13 +126,20 @@ const LeoFoundarySignature = () => {
               select-none
               whitespace-nowrap
               text-center
-              text-[14vw]
+
+              text-[clamp(42px,11vw,60px)]
+
               font-bold
               uppercase
               leading-none
               tracking-[-0.045em]
+
               text-emerald-400
+
+              sm:text-[clamp(42px,11vw,60px)]
+
               md:text-[11vw]
+
               lg:text-[9.5vw]
             "
             style={{
@@ -123,6 +149,7 @@ const LeoFoundarySignature = () => {
             LEO FOUNDARY
           </h2>
         </div>
+
       </div>
     </section>
   );

@@ -6,12 +6,14 @@ const ContactForm = () => {
     email: "",
     services: [],
     message: "",
-    budget: "",
-    timeline: "",
+    company_website: "",
   });
+
+  const [status, setStatus] = useState("idle");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -29,29 +31,64 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    setFormData({
-      name: "",
-      email: "",
-      services: [],
-      message: "",
-      budget: "",
-      timeline: "",
-    });
+
+    if (status === "sending") return;
+
+    if (formData.services.length === 0) {
+      setStatus("error");
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          services: formData.services,
+          message: formData.message,
+          company_website: formData.company_website,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Something went wrong.");
+      }
+
+      setStatus("success");
+
+      setFormData({
+        name: "",
+        email: "",
+        services: [],
+        message: "",
+        company_website: "",
+      });
+
+      setTimeout(() => {
+        setStatus("idle");
+      }, 5000);
+    } catch (error) {
+      console.error("Contact form error:", error);
+      setStatus("error");
+    }
   };
 
   return (
     <section className="relative z-10 w-full px-6 py-24 md:px-12 lg:px-20">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
-        {/* =====================================================
-            LEFT SIDE
-        ===================================================== */}
+        {/* LEFT SIDE */}
 
         <div className="flex flex-col justify-center">
-          {/* Small label */}
-
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-8 bg-emerald-400" />
 
@@ -60,14 +97,10 @@ const ContactForm = () => {
             </span>
           </div>
 
-          {/* Main heading */}
-
           <h1 className="max-w-xl text-5xl font-bold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
             Let's build something{" "}
             <span className="text-emerald-400">intelligent.</span>
           </h1>
-
-          {/* Supporting text */}
 
           <p className="mt-6 max-w-lg text-base leading-7 text-gray-300 md:text-lg">
             Tell us a little about your project and we'll get back to you
@@ -75,10 +108,10 @@ const ContactForm = () => {
             something that already exists, we'd love to hear about it.
           </p>
 
-          {/* Contact methods */}
+          {/* CONTACT METHODS */}
 
           <div className="mt-12 space-y-4">
-            {/* Email */}
+            {/* EMAIL */}
 
             <a
               href="mailto:leofoundary@gmail.com"
@@ -94,11 +127,12 @@ const ContactForm = () => {
                     <span className="invisible whitespace-nowrap text-sm">
                       Send us an email
                     </span>
-                    <span className="whitespace-nowrap absolute left-0 top-0 text-sm text-white transition-transform duration-500 [transition-timing-function:cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+
+                    <span className="absolute left-0 top-0 whitespace-nowrap text-sm text-white transition-transform duration-500 group-hover:-translate-y-full">
                       Mail Us
                     </span>
 
-                    <span className="whitespace-nowrap absolute left-0 top-full text-sm text-emerald-400 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                    <span className="absolute left-0 top-full whitespace-nowrap text-sm text-emerald-400 transition-transform duration-500 group-hover:-translate-y-full">
                       Send us an email
                     </span>
                   </div>
@@ -109,12 +143,10 @@ const ContactForm = () => {
                 </span>
               </div>
 
-              {/* Glow */}
-
               <span className="absolute -inset-10 -z-0 bg-emerald-400/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
             </a>
 
-            {/* WhatsApp */}
+            {/* WHATSAPP */}
 
             <a
               href="https://wa.me/9627898780"
@@ -128,16 +160,16 @@ const ContactForm = () => {
                     WhatsApp
                   </p>
 
-                  <div className="relative mt-1 h-6 overflow-hidden w-max">
+                  <div className="relative mt-1 h-6 w-max overflow-hidden">
                     <span className="invisible whitespace-nowrap text-sm">
                       Start a conversation
                     </span>
 
-                    <span className="whitespace-nowrap absolute left-0 top-0 text-sm text-white transition-transform duration-500 [transition-timing-function:cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                    <span className="absolute left-0 top-0 whitespace-nowrap text-sm text-white transition-transform duration-500 group-hover:-translate-y-full">
                       Let's chat
                     </span>
 
-                    <span className="whitespace-nowrap absolute left-0 top-full text-sm text-emerald-400 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                    <span className="absolute left-0 top-full whitespace-nowrap text-sm text-emerald-400 transition-transform duration-500 group-hover:-translate-y-full">
                       Start a conversation
                     </span>
                   </div>
@@ -151,7 +183,7 @@ const ContactForm = () => {
               <span className="absolute -inset-10 -z-0 bg-emerald-400/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
             </a>
 
-            {/* Location */}
+            {/* LOCATION */}
 
             <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] px-5 py-4 transition-all duration-300 hover:border-emerald-400/30">
               <div className="relative z-10 flex items-center justify-between">
@@ -162,14 +194,15 @@ const ContactForm = () => {
 
                   <div className="relative mt-1 h-6 w-max overflow-hidden">
                     <span className="invisible whitespace-nowrap text-sm">
-                      Greate Noida, India
+                      Greater Noida, India
                     </span>
-                    <span className="absolute left-0 top-0 text-sm text-white transition-transform duration-500 [transition-timing-function:cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+
+                    <span className="absolute left-0 top-0 text-sm text-white transition-transform duration-500 group-hover:-translate-y-full">
                       India
                     </span>
 
-                    <span className="absolute left-0 top-full text-sm text-emerald-400 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
-                      Greate Noida, India
+                    <span className="absolute left-0 top-full text-sm text-emerald-400 transition-transform duration-500 group-hover:-translate-y-full">
+                      Greater Noida, India
                     </span>
                   </div>
                 </div>
@@ -182,20 +215,16 @@ const ContactForm = () => {
           </div>
         </div>
 
-        {/* =====================================================
-            RIGHT SIDE — FORM
-        ===================================================== */}
+        {/* RIGHT SIDE — FORM */}
 
         <div className="relative">
-          {/* Form glow */}
-
           <div className="absolute -inset-10 -z-10 rounded-[40px] bg-emerald-400/[0.04] blur-3xl" />
 
           <form
             onSubmit={handleSubmit}
             className="relative rounded-2xl border border-white/10 bg-black/60 p-6 backdrop-blur-xl md:p-8 lg:p-10"
           >
-            {/* Form heading */}
+            {/* FORM HEADING */}
 
             <div className="mb-8">
               <p className="text-xs font-medium uppercase tracking-[0.25em] text-emerald-400">
@@ -207,9 +236,25 @@ const ContactForm = () => {
               </h2>
             </div>
 
-            {/* =================================================
-                NAME + EMAIL
-            ================================================= */}
+            {/* Honey Pot field */}
+            <input
+              type="text"
+              name="company_website"
+              value={formData.company_website}
+              onChange={handleChange}
+              tabIndex="-1"
+              autoComplete="new-password"
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                left: "-9999px",
+                width: "1px",
+                height: "1px",
+                opacity: 0,
+                pointerEvents: "none",
+              }}
+            />
+            {/* NAME + EMAIL */}
 
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
@@ -243,9 +288,7 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* =================================================
-                SERVICES
-            ================================================= */}
+            {/* SERVICES */}
 
             <div className="mt-7">
               <label className="mb-3 block text-sm text-gray-300">
@@ -280,11 +323,15 @@ const ContactForm = () => {
                   );
                 })}
               </div>
+
+              {status === "error" && formData.services.length === 0 && (
+                <p className="mt-3 text-xs text-red-400">
+                  Please select at least one service.
+                </p>
+              )}
             </div>
 
-            {/* =================================================
-                PROJECT DESCRIPTION
-            ================================================= */}
+            {/* PROJECT DESCRIPTION */}
 
             <div className="mt-7">
               <label className="mb-2 block text-sm text-gray-300">
@@ -302,86 +349,46 @@ const ContactForm = () => {
               />
             </div>
 
-            {/* =================================================
-                BUDGET + TIMELINE
-            ================================================= */}
+            {/* STATUS */}
 
-            <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <div>
-                <label className="mb-2 block text-sm text-gray-300">
-                  Estimated Budget
-                </label>
-
-                <select
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  className="w-full appearance-none rounded-lg border border-white/10 bg-black px-4 py-3 text-sm text-gray-300 outline-none transition-all duration-300 focus:border-emerald-400/50"
-                >
-                  <option value="">Select budget</option>
-                  <option>Under $500</option>
-                  <option>$500 – $1,000</option>
-                  <option>$1,000 – $5,000</option>
-                  <option>$5,000 – $10,000</option>
-                  <option>$10,000+</option>
-                  <option>Not sure yet</option>
-                </select>
+            {status === "success" && (
+              <div className="mt-6 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.05] px-4 py-3 text-sm text-emerald-400">
+                Your inquiry has been sent successfully. We'll get back to you
+                shortly.
               </div>
+            )}
 
-              <div>
-                <label className="mb-2 block text-sm text-gray-300">
-                  Timeline
-                </label>
-
-                <select
-                  name="timeline"
-                  value={formData.timeline}
-                  onChange={handleChange}
-                  className="w-full appearance-none rounded-lg border border-white/10 bg-black px-4 py-3 text-sm text-gray-300 outline-none transition-all duration-300 focus:border-emerald-400/50"
-                >
-                  <option value="">Select timeline</option>
-                  <option>As soon as possible</option>
-                  <option>Within 1 month</option>
-                  <option>1 – 3 months</option>
-                  <option>3+ months</option>
-                  <option>Just exploring</option>
-                </select>
+            {status === "error" && formData.services.length > 0 && (
+              <div className="mt-6 rounded-lg border border-red-400/20 bg-red-400/[0.05] px-4 py-3 text-sm text-red-400">
+                Something went wrong while sending your inquiry. Please try
+                again or email us directly.
               </div>
-            </div>
+            )}
 
-            {/* =================================================
-                SUBMIT BUTTON
-            ================================================= */}
+            {/* SUBMIT BUTTON */}
 
             <button
               type="submit"
-              className="group relative mt-8 flex h-14 w-full items-center justify-center overflow-hidden rounded-full bg-emerald-400 px-6 font-semibold text-black transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(52,211,153,0.25)]"
+              disabled={status === "sending"}
+              className={`group relative mt-8 flex h-14 w-full items-center justify-center overflow-hidden rounded-full px-6 font-semibold text-black transition-all duration-300 ${
+                status === "sending"
+                  ? "cursor-not-allowed bg-emerald-400/60"
+                  : "bg-emerald-400 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(52,211,153,0.25)]"
+              }`}
             >
-              {/* Glow */}
-
               <span className="absolute -inset-10 bg-emerald-300/40 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
 
-              {/* Text window */}
-
               <span className="relative h-6 w-36 overflow-hidden">
-                {/* Current text */}
-
-                <span className="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap transition-transform duration-500 [transition-timing-function:cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
-                  Send Inquiry
-                </span>
-
-                {/* Hover text */}
-
-                <span className="absolute left-1/2 top-full -translate-x-1/2 whitespace-nowrap text-emerald-950 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
-                  Let's Talk
+                <span className="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap">
+                  {status === "sending" ? "Sending..." : "Send Inquiry"}
                 </span>
               </span>
 
-              {/* Arrow */}
-
-              <span className="relative ml-3 text-lg transition-transform duration-500 group-hover:translate-x-1">
-                →
-              </span>
+              {status !== "sending" && (
+                <span className="relative ml-3 text-lg transition-transform duration-500 group-hover:translate-x-1">
+                  →
+                </span>
+              )}
             </button>
           </form>
         </div>

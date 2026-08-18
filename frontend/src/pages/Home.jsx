@@ -31,7 +31,7 @@ const Home = () => {
           PAGE CONTENT
       ===================================== */}
 
-      <main className="relative z-10">
+      <main className="relative z-10 flex items-center justify-center flex-col overflow-x-hidden">
 
         {/* HERO */}
         <Hero />
