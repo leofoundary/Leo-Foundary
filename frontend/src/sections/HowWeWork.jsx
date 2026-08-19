@@ -1,6 +1,6 @@
 import React from "react";
-import HowWeWorkHero from "../components/howwework/HowWeWorkHero";
-import HowWeWorkTimeline from "../components/howwework/HowWeWorkTimeline";
+import HowWeWorkHero from "../components/howWeWork/HowWeWorkHero";
+import HowWeWorkTimeline from "../components/howWework/HowWeWorkTimeline";
 
 const HowWeWork = () => {
   return (
