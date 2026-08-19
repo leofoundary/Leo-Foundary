@@ -75,7 +75,9 @@ const contactLimiter = rateLimit({
 ========================================= */
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
 
   auth: {
     user: EMAIL_USER,
@@ -83,10 +85,12 @@ const transporter = nodemailer.createTransport({
   },
 
   pool: true,
-
   maxConnections: 3,
-
   maxMessages: 100,
+
+  tls: {
+    minVersion: "TLSv1.2",
+  },
 });
 
 /* =========================================
