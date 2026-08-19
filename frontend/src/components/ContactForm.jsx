@@ -44,19 +44,22 @@ const ContactForm = () => {
     setStatus("sending");
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            services: formData.services,
+            message: formData.message,
+            company_website: formData.website,
+          }),
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          services: formData.services,
-          message: formData.message,
-          company_website: formData.company_website,
-        }),
-      });
+      );
 
       const result = await response.json();
 
