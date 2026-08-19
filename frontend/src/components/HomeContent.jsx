@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 import "../style/HomeContent.css";
-import HomeButton from "../components/HomeButton";
+import HomeButton from "./HomeButton";
 import HomeTag from "./HomeTag";
 import HomeMainText from "./HomeMainText";
 

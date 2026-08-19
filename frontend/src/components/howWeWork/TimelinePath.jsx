@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { timelinePath } from "../../data/howWeWorkData";
+import { timelinePath } from "../../data/HowWeWorkData";
 
 const TimelinePath = forwardRef(
   ({ pathDotRef, pathGlowRef }, pathRef) => {
