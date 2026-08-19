@@ -14,7 +14,7 @@ import HowWeWorkCard from "./HowWeWorkCard";
 import {
   steps,
   timelinePoints,
-} from "../../data/howWeWorkData";
+} from "../../data/HowWeWorkData";
 
 gsap.registerPlugin(ScrollTrigger);
 
