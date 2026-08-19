@@ -6,7 +6,7 @@ import AboutHero from "../components/about/AboutHero";
 import TheFoundry from "../components/about/TheFoundry";
 import OurThinking from "../components/about/OurThinking";
 import HowWeBuild from "../components/about/HowWeBuild";
-import AboutEcosystem from "../components/about/AboutEcosystem";
+import AboutEcosystem from "../components/about/AboutEcoSystem";
 import AboutVision from "../components/about/AboutVision";
 import AboutCTA from "../components/about/AboutCTA";
 
